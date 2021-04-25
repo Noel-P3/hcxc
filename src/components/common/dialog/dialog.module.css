@@ -1,0 +1,24 @@
+.Default {
+    background-color: white;
+    color: black;
+}
+
+.Warning {
+    background-color: #e4c33e;
+    color: white;
+}
+
+.Danger {
+    background-color: #eb6f6f;
+    color: white;
+}
+
+.Success {
+    background-color: #a1c326;
+    color: white;
+}
+
+.Information {
+    background-color: #4cb8d8;
+    color: white;
+}

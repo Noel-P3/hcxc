@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +31,154 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.card {
+  box-shadow: 0 .15rem 0.75rem 0 rgba(58,59,69,.15)!important;
+  border-radius: 10px!important;
+  margin-bottom: 5px;
+}
+
+.cardRoot {
+  background-color: #f8f9fc!important;
+  border-bottom: 1px solid #e3e6f0!important;    
+}
+
+.cardTitle {
+  color: darkgreen;  
+  font-size: 16px!important;
+}
+
+.cardContentDetalle {
+  padding: 0!important;
+}
+
+.impresionCabezera {
+  display: none;
+}
+
+.impresionGrid {
+  display: contents;
+}
+
+.impresionGridPrint {
+  display: none;
+}
+
+.impresionPie {
+  position: relative;
+  bottom: 10px;
+}
+
+@media print {
+  .impresionCabezera {
+    display: contents;
+  }
+
+  .impresionGridPrint {
+    display: contents;
+  }
+
+  .impresionGrid {
+    display: none;
+  }
+
+  .impresionPie {
+    position: absolute;
+    bottom: 10px;
+  }
+}
+
+.botonTour {
+  position: fixed;
+  top: 4.375rem;
+  right: 0px; 
+}
+
+.contenedor {
+  width: 100%!important;
+}
+
+.contenedorGrid {
+  display: contents;
+}
+
+.MaterialTablePanel {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 12px;
+  color: grey;
+}
+
+/* .MaterialTablePanel td, th {
+  padding-left: 2em;
+} */
+
+.MuiTypography-h5 {
+  font-size: 16px!important;
+}
+
+.Mui-required {
+  color: rgb(255, 0, 34)!important;
+}
+
+.ReportesPaper {
+  padding: 16px;
+  flex-grow: 1;
+  margin: 5px;
+  display: block;
+  max-width: inherit;
+}
+
+.ReportesTab {
+  margin: auto!important;
+}
+
+.tablasDetalles {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+@media print {
+  .tablasDetalles {
+    overflow-x: hidden;
+  }
+}
+
+.tablasDetallesInput {
+  min-width: 150px;
+}
+
+.tablasDetallesheader {
+  background-color: lightgrey;
+}
+
+.tablasDetallesFoot {
+  background-color: #ebebeb;
+}
+
+.tablasDetallesTitulo {
+  color: blue!important;
+  padding: 0 24px;
+}
+
+.tablasDetallesFilas {
+  padding: 0 24px;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap'); */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.simplepage{
+  /* display: flex; */
+  height: 90vh;
+  /* align-items: center; */
+  /* justify-content: center; */
+  font-size: 3rem;
 }

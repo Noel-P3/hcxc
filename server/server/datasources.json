@@ -1,0 +1,12 @@
+{
+    "firebird": {
+      "host": "127.0.0.1",
+      "port": 3052,
+      "database": "C:/Users/noelg/Desktop/Nada que ver/Proyectos Personales/.dev/React/hcxc/server/DATABASE.FDB",
+      "username": "SYSDBA",
+      "password": "click12*",
+      "name": "firebird",
+      "pools": 5,
+      "connector": "firebird"
+    }
+  }
