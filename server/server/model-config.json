@@ -25,5 +25,18 @@
         }
       }
     }
+  },
+  "Client": {
+    "dataSource": "firebird",
+    "public": true,
+    "options":{
+      "remoting":{
+        "shareMethods":{
+          "*": false,
+          "get": true,
+          "modifyUser": true
+        }
+      }
+    }
   }
 }

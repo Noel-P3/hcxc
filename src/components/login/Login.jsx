@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Grid, Paper, Avatar, TextField, Button, Typography, Link } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 const Login = ({ onLogIn }) => {
 
     const paperStyle = { padding: 20, height: '70vh', width: '50vh', margin: "20px auto" }
@@ -20,6 +18,7 @@ const Login = ({ onLogIn }) => {
         event.preventDefault();
         onLogIn({ user: data.user, password: data.password });
     }
+
     return (
         <Grid>
             <Paper elevation={10} style={paperStyle}>
@@ -45,15 +44,6 @@ const Login = ({ onLogIn }) => {
                         required
                         onChange={handleInputChange}
                     />
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                name="checkedB"
-                                color="primary"
-                            />
-                        }
-                        label="Recuerdame"
-                    />
                     <Button
                         type='submit'
                         color='primary'
@@ -67,7 +57,7 @@ const Login = ({ onLogIn }) => {
                 <Typography >
                     <Link href="#" >
                         Olvidaste la contraseña ?
-                </Link>
+                    </Link>
                 </Typography>
                 <Typography > Tienes una cuenta ?
                     <Link href="#" > Registrate aqui!</Link>

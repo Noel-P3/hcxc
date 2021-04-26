@@ -1,0 +1,39 @@
+.cuerpo {
+    margin-bottom: 10px;
+}
+
+.titulo {
+    font-family: Arial;
+    font-size: 20px;
+    color: black; 
+    font-weight: bolder; 
+    font-style: normal;
+    background-color: #808080;
+    text-align: Center; 
+    vertical-align: Middle;
+}
+
+.compania {
+    font-family: Arial;
+    font-size: 24px;
+    color: #800000; 
+    font-weight: bold; 
+    font-style: normal;
+    background-color: transparent;
+    text-align: Center; 
+    vertical-align: Top;
+}
+
+.filtros {
+    font-family: Arial;
+    font-size: 13px;
+    color: #000000; 
+    font-style: normal;
+    background-color: transparent;
+    text-align: Center; 
+    vertical-align: Top;
+}
+
+.usuario {    
+    margin: auto;
+}

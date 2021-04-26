@@ -61,7 +61,11 @@ module.exports = function (User) {
                         .then(() => {
                             transaction.commit(function (err) {
                                 if (err) transaction.rollback();
-                                else db.detach(); cb(null, [{pasa: 'Hola'}]);
+                                User.getUser(user.USER,user.PASSWORD, (err, result)=> {
+                                    if(err) cb(err)
+                                    else cb(null,result) 
+                                })
+                                db.detach();
                             })
                         })
                         .catch((error) => {

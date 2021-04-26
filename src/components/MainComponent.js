@@ -6,10 +6,11 @@ import { Get } from './common/functionServer/FunctionServer';
 import AlertMessage from './common/messageAlert/MessageAlert';
 import Login from './login/Login';
 import SideBar from './layout/SideBar';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 /* Screens */
 import User from './screens/configurations/User';
+import Cliente from './screens/clients/cliente';
 
 
 export const authContext = React.createContext();
@@ -51,6 +52,8 @@ function MainComponent() {
                     />
                     <Switch>
                         <Route exact path="/User" component={() => <User onLogOut={onLogOut}/>}/>
+                        <Route exact path="/Clients" component={Cliente}/>
+                        <Redirect to="/User"/>
                     </Switch>
                 </authContext.Provider>
                 :
