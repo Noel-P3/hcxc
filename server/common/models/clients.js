@@ -7,7 +7,7 @@ module.exports = function (Client) {
     Client.get = (condition, cb) => {
         Firebird.attach(options, function (err, db) {
 
-            let query = `SELECT * FROM CLIENTS`;
+            let query = `SELECT * FROM CLIENTS ${condition}`;
 
             if (err) cb(err)
             else {
@@ -43,32 +43,51 @@ module.exports = function (Client) {
             if (err) cb(err)
             else {
                 // db = DATABASE
-                db.transaction(Firebird.ISOLATION_READ_COMMITED, function (error, transaction) {
+                db.transaction(Firebird.ISOLATION_READ_COMMITED, function (error, transaction) {  
+                    const something = async (query) => {
+                        await new Promise((resolve, reject) => {
+                            transaction.query(query, [], (error, result) => {
+                                if (error) reject(error)
+                                else resolve(result)
+                            })
+                        })
+                        .then((result) => {
+                            transaction.commit(function (err) {
+                                if (err) transaction.rollback();
+                                let query = `WHERE ID = ${result ? result.ID : 0} AND ID_USUARIO = ${client.ID_USUARIO}`;
+                                Client.get(result ? query : '', (err, result) => {
+                                    if (err) cb(err)
+                                    else cb(null, result)
+                                })
+                                db.detach();
+                            })
+                        })
+                        .catch((error) => {
+                            transaction.rollback();
+                            cb(error)
+                        })
+                    }
+
                     if (error) cb(error)
                     else {
                         if (client.ID) {
-                            new Promise((resolve, reject) => {
-                                let query = `UPDATE CLIENTS SET NOMBRE = '${client.NOMBRE}', DIRECCION = '${client.DIRECCION}', TELEFONO = '${client.TELEFONO}', ID_VENDEDOR = ${client.ID_VENDEDOR} WHERE ID = ${client.ID}`;
 
-                                transaction.query(query, [], (error, result) => {
-                                    if (error) reject(error)
-                                    else resolve(result)
-                                })
-                            })
-                            .then(() => {
-                                transaction.commit(function (err) {
-                                    if (err) transaction.rollback();
-                                    Client.get({}, (err, result) => {
-                                        if (err) cb(err)
-                                        else cb(null, result)
-                                    })
-                                    db.detach();
-                                })
-                            })
-                            .catch((error) => {
-                                transaction.rollback();
-                                cb(error)
-                            })
+                            if (client.ELIMINAR){
+                                let query = `DELETE FROM CLIENTS WHERE ID = ${client.ID}`;    
+                                
+                                something(query);
+                            }
+                            else{
+
+                                let query = `UPDATE CLIENTS SET NOMBRE = '${client.NOMBRE}', DIRECCION = '${client.DIRECCION}', TELEFONO = '${client.TELEFONO}', ID_VENDEDOR = ${client.ID_VENDEDOR}, ESTADO = ${client.ESTADO} WHERE ID = ${client.ID} AND ID_USUARIO = ${client.ID_USUARIO} RETURNING ID`;
+
+                                something(query);
+                            }
+                        }
+                        else {
+                            let query = `INSERT INTO CLIENTS(ID,NOMBRE,DIRECCION,TELEFONO,ID_VENDEDOR,ID_USUARIO,ESTADO) VALUES(NULL,'${client.NOMBRE}','${client.DIRECCION}','${client.TELEFONO}', ${client.ID_VENDEDOR}, ${client.ID_USUARIO}, ${client.ESTADO}) RETURNING ID`;
+
+                            something(query);
                         }
                     }
                 })

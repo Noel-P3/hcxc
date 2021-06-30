@@ -21,19 +21,12 @@ export default function Editor({documentoEditar, funcionCerrar, initModificandoA
     }, [documentoEditar, initModificandoAgregando]);
 
     const onInputChange = (event) => {
-        const value = event.target.value;
-    
+        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+
         if (event.target.name === 'NOMBRE' && value.length > 150) return;
         if (event.target.name === 'DIRECCION' && value.length > 250) return;
         if (event.target.name === 'TELEFONO' && value.length > 30) return;
 
-        setDocumentoModificado(true);
-        setDocumento({...documento, [event.target.name]: value});
-    }
-
-    const onEstadoChange = ({event}) => {
-        const value = event.target.name === 'ESTADO' ? event.target.checked : event.target.value;
-    
         setDocumentoModificado(true);
         setDocumento({...documento, [event.target.name]: value});
     }
@@ -57,10 +50,8 @@ export default function Editor({documentoEditar, funcionCerrar, initModificandoA
                 NOMBRE: '',
                 DIRECCION: '',
                 TELEFONO: '',
-                ESTADO: false,
                 ID_VENDEDOR: null, 
                 ID_USUARIO: 0,
-                ELIMINAR: false,
             }
         );
 
@@ -146,7 +137,6 @@ export default function Editor({documentoEditar, funcionCerrar, initModificandoA
                         accionBuscar={null}
                         companiaId={0}
                         accionLimpiar={accionLimpiar}
-                        onEstadoChange={onEstadoChange}
                         tipoComprobante={0}
                         roleNombre={0}
                     />

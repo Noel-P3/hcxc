@@ -595,13 +595,23 @@ export const cabezeras = (collection: string, utilizaCentroCosto: boolean = fals
                 { type: 'boolean', title: 'Esta Inactivo', field: 'isInactivo', cellStyle: { minWidth: 150 }, headerStyle: { minWidth: 150 } }
             ]
 
-            case 'Clientes':
-                return [
-                    { type: 'string', title: 'Código', field: 'ID', cellStyle: { minWidth: 150 }, headerStyle: { minWidth: 150 } },
-                    { type: 'string', title: 'Nombre', field: 'NOMBRE', cellStyle: { minWidth: 150 }, headerStyle: { minWidth: 150 } },
-                    { type: 'string', title: 'Direccion', field: 'DIRECCION', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
-                    { type: 'string', title: 'Telefono', field: 'TELEFONO', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
-                ]
+        case 'Clientes':
+            return [
+                { type: 'numeric', title: 'Código', field: 'ID', cellStyle: { minWidth: 150 }, headerStyle: { minWidth: 150 } },
+                { type: 'string', title: 'Nombre', field: 'NOMBRE', cellStyle: { minWidth: 150 }, headerStyle: { minWidth: 150 } },
+                { type: 'string', title: 'Direccion', field: 'DIRECCION', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
+                { type: 'string', title: 'Telefono', field: 'TELEFONO', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
+                { type: 'boolean', title: 'Estado', field: 'ESTADO', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
+            ]
+
+        case 'Seller':
+            return [
+                { type: 'numeric', title: 'Código', field: 'ID', cellStyle: { minWidth: 150 }, headerStyle: { minWidth: 150 } },
+                { type: 'string', title: 'Nombre', field: 'NOMBRE', cellStyle: { minWidth: 150 }, headerStyle: { minWidth: 150 } },
+                { type: 'string', title: 'Direccion', field: 'DIRECCION', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
+                { type: 'string', title: 'Telefono', field: 'TELEFONO', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
+                { type: 'boolean', title: 'Estado', field: 'ESTADO', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
+            ]
 
         case 'CxCClienteGrupos':
             return [

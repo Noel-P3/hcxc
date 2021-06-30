@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import classes from './barraHerramienta.module.css';
-import { authContext } from '../../MainComponent';
 import { Grid, Button, Fab, Hidden } from "@material-ui/core";
 import { 
     Print, Check, LockOpen, Lock, Search, Edit, DeleteForever,
@@ -33,8 +32,6 @@ export default function BarraHerramienta(
         isGrabando?: boolean
     }
 ): JSX.Element {  
-    const { roleNombre } = useContext(authContext);
-
     const iconoMostrar = (icono?: string) => {
         if (icono === 'LockOpen') return (<LockOpen className={classes.iconos} />) 
         else if (icono === 'Lock') return (<Lock className={classes.iconos} />)  
@@ -109,7 +106,6 @@ export default function BarraHerramienta(
             </Grid>} 
 
             {accionEliminar &&
-            roleNombre === 'administrador' &&
             <Grid item xs={4} sm={2}>
                 <Hidden smDown>
                     <Button 

@@ -8,9 +8,9 @@ import { AsignarNombreMaterialTable } from '../../common/funciones/funciones';
 import Editor from './editor/editor';
 import { authContext } from '../../MainComponent';
 
-export default function Cliente() {
-    const collection = 'Clientes';
-    const titulo = 'Clientes';
+export default function Seller() {
+    const collection = 'Sellers';
+    const titulo = 'Vendedores';
     const didMountRef = useRef(false);
     const { ID } = useContext(authContext);
     const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ export default function Cliente() {
 
     const consultar = async () => {
         setLoading(true);
-        setData(await Get(`api/Clients/get`, null,  {condition: `WHERE ID_USUARIO = ${ID}`},{}
+        setData(await Get(`api/${collection}/get`, null,  {condition: `WHERE ID_USUARIO = ${ID}`},{}
         ));
         setLoading(false);
     };
@@ -52,11 +52,10 @@ export default function Cliente() {
                 NOMBRE: '',
                 DIRECCION: '',
                 TELEFONO: '', 
-                ID_VENDEDOR: null,
-                NOMBRE_VENDEDOR : '',
                 ID_USUARIO: ID,
                 ESTADO: false,
-                ELIMINAR: false,   
+                ELIMINAR: false,
+                
             }
         );
     };

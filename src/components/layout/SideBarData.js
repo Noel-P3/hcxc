@@ -19,15 +19,15 @@ export const SideBarData = [
         ]
     },
     {
-        title: 'Reports',
-        path: '/reports',
+        title: 'Cuentas por cobrar',
+        // path: '',
         icon: <AiIcons.AiFillHome/>,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
         iconOpened: <RiIcons.RiArrowUpSFill/>,
         subNav:[
             {
-                title: 'Reports',
-                path: '/reports/reports1',
+                title: 'Clientes',
+                path: '/Clients',
                 icon: <IoIcons.IoIosPaper/>,
             },
             {

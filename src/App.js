@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import MainComponent from './components/MainComponent';
 import { ThemeProvider } from "@material-ui/core";
 import { theme1 } from './AppTheme';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

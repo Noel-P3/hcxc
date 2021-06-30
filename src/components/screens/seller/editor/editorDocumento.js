@@ -1,13 +1,13 @@
 import React from 'react';
 import {
     CardContent, Grid, Card, CardHeader, TextField, InputAdornment,
-    IconButton, FormControlLabel, Switch
+    IconButton
 } from "@material-ui/core";
 import { Search, Close } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 
 export default function EditorDocumento({
-    documento, modificandoAgregandoDocumento, errores, onInputChange, accionBuscar, companiaId, accionLimpiar, onEstadoChange
+    documento, modificandoAgregandoDocumento, errores, onInputChange, accionBuscar, companiaId, accionLimpiar, tipoComprobante, roleNombre
 }) {
     return (
         <Grid item xs={12}>
@@ -85,22 +85,6 @@ export default function EditorDocumento({
                                     value={documento.TELEFONO ?? ''}
                                 />
                                 : <div><div><strong>Teléfono</strong></div><div>{documento.TELEFONO}</div></div>}
-                        </Grid>
-                        <Grid container item xs={12} spacing={1}>
-                            <Grid item xs={12} id="ESTADO">
-                                {modificandoAgregandoDocumento ?
-                                    <FormControlLabel
-                                        control={
-                                            <Switch
-                                                checked={documento.ESTADO ?? false}
-                                                name="ESTADO" color="primary"
-                                                onChange={() => onEstadoChange({event: {target: {name: 'ESTADO', checked: documento.ESTADO ? false : true}}})}
-                                            />
-                                        }
-                                        label="Esta Inactivo" labelPlacement="end"
-                                    />
-                                    : <div><div><strong>Esta Inactivo</strong></div><div>{documento.ESTADO ? 'SI' : 'NO'}</div></div>}
-                            </Grid>
                         </Grid>
                     </Grid>
                 </CardContent>

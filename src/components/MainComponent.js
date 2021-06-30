@@ -10,10 +10,18 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 /* Screens */
 import User from './screens/configurations/User';
-import Cliente from './screens/clients/cliente';
-
+import Cliente from './screens/clients/Cliente';
 
 export const authContext = React.createContext();
+
+/**
+ * ID
+ * NAME
+ * LASTNAME
+ * EMAIL
+ * PASSWORD
+ * CONFIRMED 
+ */
 
 function MainComponent() {
     const [loginState, setLoginState] = useState(null);
