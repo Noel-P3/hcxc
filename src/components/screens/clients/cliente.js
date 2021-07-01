@@ -28,7 +28,7 @@ export default function Cliente() {
 
     const consultar = async () => {
         setLoading(true);
-        setData(await Get(`api/Clients/get`, null,  {condition: `WHERE ID_USUARIO = ${ID}`},{}
+        setData(await Get(`api/Clients/get`, null,  {condition: ``},{}
         ));
         setLoading(false);
     };

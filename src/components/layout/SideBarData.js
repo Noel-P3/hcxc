@@ -31,8 +31,8 @@ export const SideBarData = [
                 icon: <IoIcons.IoIosPaper/>,
             },
             {
-                title: 'Reports 2',
-                path: '/reports/reports2',
+                title: 'Vendedores',
+                path: '/Sellers',
                 icon: <IoIcons.IoIosPaper/>,   
             },
             {

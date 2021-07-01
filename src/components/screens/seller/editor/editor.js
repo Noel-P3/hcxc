@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Grid } from "@material-ui/core";
 import PropTypes from 'prop-types';
 import { GrabarCustom } from "../../../common/functionServer/FunctionServer";
 import BarraHerramienta from '../../../common/barraHerramienta/barraHerramienta';
 import Dialog from '../../../common/dialog/dialog';
 import EditorDocumento from './editorDocumento';
+import { authContext } from '../../../MainComponent';
 
 export default function Editor({documentoEditar, funcionCerrar, initModificandoAgregando}) {
     const [modificandoAgregandoDocumento, setModificandoAgregandoDocumento] = useState(false);
@@ -12,6 +13,7 @@ export default function Editor({documentoEditar, funcionCerrar, initModificandoA
     const [confirmarAccionEliminar, setConfirmarAccionEliminar] = useState(false);
     const [documentoModificado, setDocumentoModificado] = useState(false);
     const [errores, setErrores] = useState({});
+    const { ID } = useContext(authContext);
     const [documento, setDocumento] = useState({isInactivo: false}); 
     const [isGrabando, setIsGrabando] = useState(false);   
 
@@ -42,6 +44,13 @@ export default function Editor({documentoEditar, funcionCerrar, initModificandoA
         }
     };
 
+    const onEstadoChange = ({event}) => {
+        const value = event.target.name === 'ESTADO' ? event.target.checked : event.target.value;
+    
+        setDocumentoModificado(true);
+        setDocumento({...documento, [event.target.name]: value});
+    }
+
     //Acciones de la barra de herramientas
     const accionNuevo = async () => {
         setDocumento(
@@ -51,7 +60,8 @@ export default function Editor({documentoEditar, funcionCerrar, initModificandoA
                 DIRECCION: '',
                 TELEFONO: '',
                 ID_VENDEDOR: null, 
-                ID_USUARIO: 0,
+                ID_USUARIO: ID,
+                ESTADO: false,
             }
         );
 
@@ -63,7 +73,7 @@ export default function Editor({documentoEditar, funcionCerrar, initModificandoA
     const accionEliminarConfirmar = () => setConfirmarAccionEliminar(true);
     const accionEliminar = async () => {
         let copiaData = {...documento, ELIMINAR: true}
-        let respuesta = await GrabarCustom(`api/Clients/modifyClient`, copiaData, false);
+        let respuesta = await GrabarCustom(`api/Sellers/modifySeller`, copiaData, false);
         if (respuesta.length) {
             funcionCerrar();
         } else setConfirmarAccionEliminar(false);
@@ -84,7 +94,7 @@ export default function Editor({documentoEditar, funcionCerrar, initModificandoA
             return
         }
         //Validaciones
-        let nuevoDoc = await GrabarCustom(`api/Clients/modifyClient`, documento, false);
+        let nuevoDoc = await GrabarCustom(`api/Sellers/modifySeller`, documento, false);
 
         setIsGrabando(false);
 
@@ -134,11 +144,8 @@ export default function Editor({documentoEditar, funcionCerrar, initModificandoA
                         modificandoAgregandoDocumento={modificandoAgregandoDocumento}
                         errores={errores}
                         onInputChange={onInputChange}
-                        accionBuscar={null}
-                        companiaId={0}
                         accionLimpiar={accionLimpiar}
-                        tipoComprobante={0}
-                        roleNombre={0}
+                        onEstadoChange={onEstadoChange}
                     />
                 </Grid>
             </div>

@@ -1,13 +1,11 @@
 import React from 'react';
 import {
-    CardContent, Grid, Card, CardHeader, TextField, InputAdornment,
-    IconButton
+    CardContent, Grid, Card, CardHeader, TextField, FormControlLabel, Switch 
 } from "@material-ui/core";
-import { Search, Close } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 
 export default function EditorDocumento({
-    documento, modificandoAgregandoDocumento, errores, onInputChange, accionBuscar, companiaId, accionLimpiar, tipoComprobante, roleNombre
+    documento, modificandoAgregandoDocumento, errores, onInputChange, onEstadoChange
 }) {
     return (
         <Grid item xs={12}>
@@ -28,35 +26,6 @@ export default function EditorDocumento({
                                     value={documento.NOMBRE ?? ''}
                                 />
                                 : <div><div><strong>Nombre</strong></div><div>{documento.NOMBRE}</div></div>}
-                        </Grid>
-                        <Grid item xs={12} sm={6} id="vendedorNombre">
-                            {modificandoAgregandoDocumento ?
-                                <TextField
-                                    disabled fullWidth name="vendedorNombre"
-                                    label="Vendedor Asignado"
-                                    InputLabelProps={{ shrink: true }} variant="outlined"
-                                    margin="normal"
-                                    error={errores.vendedorNombre ? true : false}
-                                    helperText={errores.vendedorNombre}
-                                    value={documento.vendedorNombre ?? ''}
-                                    InputProps={{
-                                        endAdornment:
-                                            <InputAdornment position="end">
-                                                {documento.vendedorNombre ?
-                                                    <IconButton onClick={() => accionLimpiar(null, null, 'vendedorNombre')}>
-                                                        <Close />
-                                                    </IconButton>
-                                                    :
-                                                    <IconButton onClick={() => accionBuscar(
-                                                        'CxCVendedors', null, null, 'vendedorNombre',
-                                                        `companiaId = ${companiaId} and isInactivo = 0`, 'nombre ASC'
-                                                    )}>
-                                                        <Search />
-                                                    </IconButton>}
-                                            </InputAdornment>
-                                    }}
-                                />
-                                : <div><div><strong>vendedorNombre</strong></div><div>{documento.vendedorNombre}</div></div>}
                         </Grid>
                         <Grid item xs={12} sm={6} id="DIRECCION">
                             {modificandoAgregandoDocumento ?
@@ -85,6 +54,22 @@ export default function EditorDocumento({
                                     value={documento.TELEFONO ?? ''}
                                 />
                                 : <div><div><strong>Teléfono</strong></div><div>{documento.TELEFONO}</div></div>}
+                        </Grid>
+                        <Grid container item xs={12} spacing={1}>
+                            <Grid item xs={12} id="ESTADO">
+                                {modificandoAgregandoDocumento ?
+                                    <FormControlLabel
+                                        control={
+                                            <Switch
+                                                checked={documento.ESTADO ?? false}
+                                                name="ESTADO" color="primary"
+                                                onChange={() => onEstadoChange({event: {target: {name: 'ESTADO', checked: documento.ESTADO ? false : true}}})}
+                                            />
+                                        }
+                                        label="Esta Inactivo" labelPlacement="end"
+                                    />
+                                    : <div><div><strong>Esta Inactivo</strong></div><div>{documento.ESTADO ? 'SI' : 'NO'}</div></div>}
+                            </Grid>
                         </Grid>
                     </Grid>
                 </CardContent>

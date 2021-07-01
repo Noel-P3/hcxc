@@ -11,6 +11,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 /* Screens */
 import User from './screens/configurations/User';
 import Cliente from './screens/clients/Cliente';
+import Seller from './screens/seller/Seller';
 
 export const authContext = React.createContext();
 
@@ -61,6 +62,7 @@ function MainComponent() {
                     <Switch>
                         <Route exact path="/User" component={() => <User onLogOut={onLogOut}/>}/>
                         <Route exact path="/Clients" component={Cliente}/>
+                        <Route exact path="/Sellers" component={Seller}/>
                         <Redirect to="/User"/>
                     </Switch>
                 </authContext.Provider>

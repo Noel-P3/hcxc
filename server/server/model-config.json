@@ -16,9 +16,9 @@
   "User": {
     "dataSource": "firebird",
     "public": true,
-    "options":{
-      "remoting":{
-        "shareMethods":{
+    "options": {
+      "remoting": {
+        "shareMethods": {
           "*": false,
           "getUser": true,
           "modifyUser": true
@@ -29,9 +29,22 @@
   "Client": {
     "dataSource": "firebird",
     "public": true,
-    "options":{
-      "remoting":{
-        "shareMethods":{
+    "options": {
+      "remoting": {
+        "shareMethods": {
+          "*": false,
+          "get": true,
+          "modifyUser": true
+        }
+      }
+    }
+  },
+  "Seller": {
+    "dataSource": "firebird",
+    "public": true,
+    "options": {
+      "remoting": {
+        "shareMethods": {
           "*": false,
           "get": true,
           "modifyUser": true

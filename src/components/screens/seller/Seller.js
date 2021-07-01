@@ -28,7 +28,7 @@ export default function Seller() {
 
     const consultar = async () => {
         setLoading(true);
-        setData(await Get(`api/${collection}/get`, null,  {condition: `WHERE ID_USUARIO = ${ID}`},{}
+        setData(await Get(`api/${collection}/get`, null,  {condition: ``},{}
         ));
         setLoading(false);
     };
