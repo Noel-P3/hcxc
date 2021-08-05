@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es solo una cuentas por cobrar y administracion de salidas y entradas de uno o varios inventarios
 
 ## Available Scripts
 
