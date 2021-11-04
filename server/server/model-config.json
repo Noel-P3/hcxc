@@ -51,5 +51,57 @@
         }
       }
     }
+  },
+  "ProductGroup": {
+    "dataSource": "firebird",
+    "public": true,
+    "options": {
+      "remoting": {
+        "shareMethods": {
+          "*": false,
+          "get": true,
+          "modifyUser": true
+        }
+      }
+    }
+  },
+  "Almacen": {
+    "dataSource": "firebird",
+    "public": true,
+    "options": {
+      "remoting": {
+        "shareMethods": {
+          "*": false,
+          "get": true,
+          "modifyUser": true
+        }
+      }
+    }
+  },
+  "Inventory": {
+    "dataSource": "firebird",
+    "public": true,
+    "options": {
+      "remoting": {
+        "shareMethods": {
+          "*": false,
+          "get": true,
+          "modifyUser": true
+        }
+      }
+    }
+  },
+  "Factura": {
+    "dataSource": "firebird",
+    "public": true,
+    "options": {
+      "remoting": {
+        "shareMethods": {
+          "*": false,
+          "get": true,
+          "modifyUser": true
+        }
+      }
+    }
   }
 }

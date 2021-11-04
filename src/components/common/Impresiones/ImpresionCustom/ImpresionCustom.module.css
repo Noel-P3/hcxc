@@ -1,0 +1,9 @@
+@page {
+    margin: 10mm;
+}
+
+.cuerpo {
+    background-color: "#FFFFFF"; 
+    color: "#000000";
+    font-size: medium;
+}

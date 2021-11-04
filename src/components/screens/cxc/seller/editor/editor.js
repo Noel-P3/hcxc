@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
-import { GrabarCustom } from "../../../common/functionServer/FunctionServer";
-import BarraHerramienta from "../../../common/barraHerramienta/barraHerramienta";
-import Dialog from "../../../common/dialog/dialog";
+import { GrabarCustom } from "../../../../common/functionServer/FunctionServer";
+import BarraHerramienta from "../../../../common/barraHerramienta/barraHerramienta";
+import Dialog from "../../../../common/dialog/dialog";
 import EditorDocumento from "./editorDocumento";
 
 export default function Editor({
@@ -27,7 +27,10 @@ export default function Editor({
   }, [documentoEditar, initModificandoAgregando]);
 
   const onInputChange = (event) => {
-    const value = event.target.value;
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
 
     if (event.target.name === "NOMBRE" && value.length > 150) return;
     if (event.target.name === "DIRECCION" && value.length > 250) return;
@@ -35,6 +38,21 @@ export default function Editor({
 
     setDocumentoModificado(true);
     setDocumento({ ...documento, [event.target.name]: value });
+  };
+
+  //Acciones Busqueda
+  const accionLimpiar = (detalle, index, propiedad) => {
+    if (propiedad === "vendedorNombre") {
+      setDocumento({ ...documento, vendedorId: null, vendedorNombre: "" });
+    }
+
+    if (propiedad === "tipoComprobanteNombre") {
+      setDocumento({
+        ...documento,
+        tipoComprobanteId: null,
+        tipoComprobanteNombre: "",
+      });
+    }
   };
 
   const onEstadoChange = ({ event }) => {
@@ -47,21 +65,6 @@ export default function Editor({
     setDocumento({ ...documento, [event.target.name]: value });
   };
 
-  //Acciones Busqueda
-  const accionLimpiar = (detalle, index, propiedad) => {
-    if (propiedad === "VENDEDOR") {
-      setDocumento({ ...documento, ID_VENDEDOR: null, VENDEDOR: "" });
-    }
-
-    if (propiedad === "tipoComprobanteNombre") {
-      setDocumento({
-        ...documento,
-        tipoComprobanteId: null,
-        tipoComprobanteNombre: "",
-      });
-    }
-  };
-
   //Acciones de la barra de herramientas
   const accionNuevo = async () => {
     setDocumento({
@@ -69,10 +72,9 @@ export default function Editor({
       NOMBRE: "",
       DIRECCION: "",
       TELEFONO: "",
-      ESTADO: false,
       ID_VENDEDOR: null,
       ID_USUARIO: usuarioId,
-      ELIMINAR: false,
+      ESTADO: false,
     });
 
     setModificandoAgregandoDocumento(true);
@@ -84,7 +86,7 @@ export default function Editor({
   const accionEliminar = async () => {
     let copiaData = { ...documento, ELIMINAR: true };
     let respuesta = await GrabarCustom(
-      `api/Clients/modifyClient`,
+      `api/Sellers/modifySeller`,
       copiaData,
       false
     );
@@ -110,7 +112,7 @@ export default function Editor({
     }
     //Validaciones
     let nuevoDoc = await GrabarCustom(
-      `api/Clients/modifyClient`,
+      `api/Sellers/modifySeller`,
       documento,
       false
     );
@@ -173,12 +175,8 @@ export default function Editor({
             modificandoAgregandoDocumento={modificandoAgregandoDocumento}
             errores={errores}
             onInputChange={onInputChange}
-            companiaId={0}
             accionLimpiar={accionLimpiar}
             onEstadoChange={onEstadoChange}
-            tipoComprobante={0}
-            roleNombre={0}
-            setDocumento={setDocumento}
           />
         </Grid>
       </div>

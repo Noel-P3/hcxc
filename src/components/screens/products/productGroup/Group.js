@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Grid } from "@material-ui/core";
 import { useReactToPrint } from "react-to-print";
-import { Get } from "../../common/functionServer/FunctionServer";
-import BarraHerramienta from "../../common/barraHerramienta/barraHerramienta";
-import DetalleGrid from "../../common/DetalleGrid/DetalleGrid";
-import { AsignarNombreMaterialTable } from "../../common/funciones/funciones";
+import { Get } from "../../../common/functionServer/FunctionServer";
+import BarraHerramienta from "../../../common/barraHerramienta/barraHerramienta";
+import DetalleGrid from "../../../common/DetalleGrid/DetalleGrid";
+import { AsignarNombreMaterialTable } from "../../../common/funciones/funciones";
 import Editor from "./editor/editor";
-import { authContext } from "../../MainComponent";
+import { authContext } from "../../../MainComponent";
 
-export default function Seller() {
-  const collection = "Sellers";
-  const titulo = "Vendedores";
+export default function Group() {
+  const collection = "ProductGroups";
+  const titulo = "Grupo de productos";
   const didMountRef = useRef(false);
   const { ID } = useContext(authContext);
   const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ export default function Seller() {
 
   const consultar = async () => {
     setLoading(true);
-    setData(await Get(`api/${collection}/get`, null, { condition: `` }, {}));
+    setData(await Get(`api/ProductGroups/get`, null, { condition: `` }, {}));
     setLoading(false);
   };
 
@@ -51,11 +51,6 @@ export default function Seller() {
     setDocumentoEditar({
       ID: null,
       NOMBRE: "",
-      DIRECCION: "",
-      TELEFONO: "",
-      ID_USUARIO: ID,
-      ESTADO: false,
-      ELIMINAR: false,
     });
   };
 

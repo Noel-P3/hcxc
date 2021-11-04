@@ -12,9 +12,9 @@ import {
 } from "@material-ui/core";
 import { Search, Close } from "@material-ui/icons";
 import PropTypes from "prop-types";
-import Busqueda from "../../../common/busqueda/busqueda";
+import Busqueda from "../../../../common/busqueda/busqueda";
 import Vendedor from "./vendedor";
-import { GrabarCustom } from "../../../common/functionServer/FunctionServer";
+import { GrabarCustom } from "../../../../common/functionServer/FunctionServer";
 
 export default function EditorDocumento({
   documento,

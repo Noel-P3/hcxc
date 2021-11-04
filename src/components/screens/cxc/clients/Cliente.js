@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Grid } from "@material-ui/core";
 import { useReactToPrint } from "react-to-print";
-import { Get } from "../../common/functionServer/FunctionServer";
-import BarraHerramienta from "../../common/barraHerramienta/barraHerramienta";
-import DetalleGrid from "../../common/DetalleGrid/DetalleGrid";
-import { AsignarNombreMaterialTable } from "../../common/funciones/funciones";
+import { Get } from "../../../common/functionServer/FunctionServer";
+import BarraHerramienta from "../../../common/barraHerramienta/barraHerramienta";
+import DetalleGrid from "../../../common/DetalleGrid/DetalleGrid";
+import { AsignarNombreMaterialTable } from "../../../common/funciones/funciones";
 import Editor from "./editor/editor";
-import { authContext } from "../../MainComponent";
+import { authContext } from "../../../MainComponent";
 
 export default function Cliente() {
-  const collection = "Clientes";
+  const collection = "Clients";
   const titulo = "Clientes";
   const didMountRef = useRef(false);
   const { ID } = useContext(authContext);

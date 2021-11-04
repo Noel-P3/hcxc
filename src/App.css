@@ -1,56 +1,52 @@
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* sobreescribo este estilo porque bootstrap inyecta un estilo que daña el de MUI */
+legend {
+  float: none !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*El popper no se ve cuando se usa en modals ya que queda detras de este */
+.MuiAutocomplete-popper {
+  z-index: 10000 !important;
 }
 
 .card {
-  box-shadow: 0 .15rem 0.75rem 0 rgba(58,59,69,.15)!important;
-  border-radius: 10px!important;
+  box-shadow: 0 0.15rem 0.75rem 0 rgba(58, 59, 69, 0.15) !important;
+  border-radius: 10px !important;
   margin-bottom: 5px;
 }
 
-.cardRoot {
-  background-color: #f8f9fc!important;
-  border-bottom: 1px solid #e3e6f0!important;    
+.card .MuiCardHeader-root {
+  color: darkgreen;
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
+  font-size: 16px;
 }
 
-.cardTitle {
-  color: darkgreen;  
-  font-size: 16px!important;
+.cardStyle2 {
+  width: 100%;
 }
 
-.cardContentDetalle {
-  padding: 0!important;
+.cardStyle2 .MuiCardHeader-root {
+  color: brown;
+  background-color: white;
+  border-bottom: 1px solid #e3e6f0;
+  font-size: 16px;
+}
+
+.cardStyle3 {
+  box-shadow: 0 0.15rem 0.75rem 0 rgba(58, 59, 69, 0.15) !important;
+  border-radius: 10px !important;
+  margin-bottom: 5px;
+}
+
+.cardStyle3 .MuiCardHeader-root {
+  color: darkgreen;
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
+  font-size: 16px;
+}
+
+.cardStyle3 .MuiCardContent-root {
+  padding: 0;
 }
 
 .impresionCabezera {
@@ -59,6 +55,12 @@
 
 .impresionGrid {
   display: contents;
+  /* font-size: x-large; */
+}
+.impresion {
+  /* display: contents; */
+  /* font-size: x-large; */
+  font-size: 16px;
 }
 
 .impresionGridPrint {
@@ -73,6 +75,7 @@
 @media print {
   .impresionCabezera {
     display: contents;
+    /* font-size: 36px; */
   }
 
   .impresionGridPrint {
@@ -92,11 +95,11 @@
 .botonTour {
   position: fixed;
   top: 4.375rem;
-  right: 0px; 
+  right: 0px;
 }
 
 .contenedor {
-  width: 100%!important;
+  width: 100% !important;
 }
 
 .contenedorGrid {
@@ -115,11 +118,11 @@
 } */
 
 .MuiTypography-h5 {
-  font-size: 16px!important;
+  font-size: 16px !important;
 }
 
 .Mui-required {
-  color: rgb(255, 0, 34)!important;
+  color: red !important;
 }
 
 .ReportesPaper {
@@ -131,7 +134,7 @@
 }
 
 .ReportesTab {
-  margin: auto!important;
+  margin: auto !important;
 }
 
 .tablasDetalles {
@@ -142,6 +145,10 @@
 @media print {
   .tablasDetalles {
     overflow-x: hidden;
+  }
+
+  .MuiTableCell-paddingNone {
+    display: none !important;
   }
 }
 
@@ -158,7 +165,7 @@
 }
 
 .tablasDetallesTitulo {
-  color: blue!important;
+  color: blue !important;
   padding: 0 24px;
 }
 
@@ -166,19 +173,10 @@
   padding: 0 24px;
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap'); */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Lato', sans-serif;
+input[type="number"] {
+  text-align: right;
 }
 
-.simplepage{
-  /* display: flex; */
-  height: 90vh;
-  /* align-items: center; */
-  /* justify-content: center; */
-  font-size: 3rem;
+.TableCellNoBorderBottom {
+  border-bottom: none !important;
 }
