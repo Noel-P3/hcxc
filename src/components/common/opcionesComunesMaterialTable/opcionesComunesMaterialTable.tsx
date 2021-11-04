@@ -65,6 +65,7 @@ export const cabezeras = (collection: string): Column<any>[] => {
                 { type: 'string', title: 'Direccion', field: 'DIRECCION', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
                 { type: 'string', title: 'Telefono', field: 'TELEFONO', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
                 { type: 'string', title: 'Vendedor', field: 'VENDEDOR', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
+                { type: 'string', title: 'Balance', field: 'BALANCE', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
                 { type: 'boolean', title: 'Estado', field: 'ESTADO', cellStyle: { minWidth: 250 }, headerStyle: { minWidth: 250 } },
             ]
 
